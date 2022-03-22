@@ -30,16 +30,6 @@ connect.then((db) =>{
 
 var app = express();
 
-// $$$$$$$$$$$$$$$$$$ Redirect all incomming http request to https $$$$$$$$$$$$$$$$$$
-app.all('*', (req, res, next) => {
-  if(req.secure){
-    return next();
-  }else{
-    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
-  }
-});
-// $$$$$$$$$$$$$$$$$$ END $$$$$$$$$$$$$$$$$$
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
