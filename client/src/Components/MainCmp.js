@@ -21,6 +21,9 @@ function Main(props) {
 
 	const token = useSelector(state => state.auth.token);
 	const dispatch = useDispatch();
+
+	const state = useSelector(state => state);
+	console.log(state);
 	
 	/* eslint-disable */
 	useEffect(() => {
