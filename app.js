@@ -23,7 +23,7 @@ var wishListRouter = require('./routes/wishListRouter');
 
 // Connecting with Mongodb Server
 mongoose.Promise = global.Promise;
-const connect = mongoose.connect(process.env.mongoUrl || process.env.MONGODB_URI, {useMongoClient: true});
+const connect = mongoose.connect(process.env.MONGODB_URI || process.env.mongoUrl, {useMongoClient: true});
 connect.then((db) =>{
   console.log("Connected to Mongodb Server Correctly... " + process.env.mongoUrl);
 }, (err) => console.log("Can not connect to Mongodb server... " + err));
