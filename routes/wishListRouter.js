@@ -115,23 +115,19 @@ wishListRouter.route('/:productId')
                     (err) => next(err))
     
                 }else{
-                    WishList.deleteOne({user: req.user._id}, (err, result) =>{
-                        if (!err){
-                            // console.log("Document of " + req.user._doc.firstname + " " + req.user._doc.lastname   + " has been removed");
-                            res.statusCode = 200;
-                            res.setHeader('Content-Type', 'application/json');
-                            res.json({
-                                wishlist: [],
-                                success: true,
-                                statusMsg: 'Wishlist removed'
-                            });
-                        }else{
-                            next(err);
-                        }
+                    WishList.deleteOne({user: req.user._id})
+                    .then(result =>{
+                        res.statusCode = 200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json({
+                            wishlist: [],
+                            success: true,
+                            statusMsg: 'Wishlist removed'
+                        });
                     },
                     (err) => next(err))
                     .catch((err) => next(err))
-                }
+                    }
             }else{
                 return res.status(404).send({
                     statusMsg: 'Product not found'
