@@ -21,9 +21,6 @@ function Main(props) {
 
 	const token = useSelector(state => state.auth.token);
 	const dispatch = useDispatch();
-
-	const state = useSelector(state => state);
-	console.log(state);
 	
 	/* eslint-disable */
 	useEffect(() => {
@@ -42,7 +39,8 @@ function Main(props) {
 			return verifyUser(path[1]);
 		}
 	}, []);
-
+	console.log(window.location.pathname);
+	console.log(window.location);
 	useEffect(() =>{
 		document.title = `TheWayShop | ${document.location.pathname.split('/')[1]}`
 	},[document.title]);

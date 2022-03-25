@@ -111,10 +111,10 @@ userRouter.get('/verify/:userId/:confirCode', cors.corsWithOpts, (req, res, next
 					console.log("Account verified successfully");
 				}
 			})
-			User.updateOne(
-				{ _id: req.params.userId },
-				{ $unset: { confirmationCode: ""} }
-			).exec();
+			// User.updateOne(
+			// 	{ _id: req.params.userId },
+			// 	{ $unset: { confirmationCode: ""} }
+			// ).exec();
 		}else{
 			res.statusCode = 403;
 			res.setHeader('Content-Type', 'application/json');
