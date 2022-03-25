@@ -127,7 +127,7 @@ wishListRouter.route('/:productId')
                     },
                     (err) => next(err))
                     .catch((err) => next(err))
-                    }
+                }
             }else{
                 return res.status(404).send({
                     statusMsg: 'Product not found'

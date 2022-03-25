@@ -56,12 +56,12 @@ function Main(props) {
 				<TransitionGroup>
 					<CSSTransition key={props.location.key} timeout={300} classNames="page">
 						<Switch>
-							<Route exact path="/home" component={() => <Home /> } />
-							<Route exact path="/products/:productId/:productName?" component={() => <ProductDetail /> } />
+							<Route path="/home" component={() => <Home /> } />
+							<Route path="/products/:productId/:productName?" component={() => <ProductDetail /> } />
 							<Route path="/wishlist" component={() => token ? <Wishlist /> : <Redirect to="/home" />} />
 							<Route path="/profile"  component={() => token ? <UserProfile /> : <Redirect to="/home" />} />
-							<Route exact path="/users/verify/:userId/:confirCode" />
-							<Route exact path="/forgotpassword" component={() => <ForgotPasswordEnterEmail /> } />
+							<Route exact path="/users/verify/:userId/:confirCode" component={() => <Redirect to="/home" />} />
+							<Route path="/forgotpassword" component={() => <ForgotPasswordEnterEmail /> } />
 							<Route exact path="/users/forgotpassword/resetpassword/:userId/:confirResetPasswordCode" component={() => <ForgotPasswordEnterNewPass /> } />
 							
 							<Redirect to="/home" />
