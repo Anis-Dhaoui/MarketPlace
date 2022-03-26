@@ -39,8 +39,7 @@ function Main(props) {
 			return verifyUser(path[1]);
 		}
 	}, []);
-	console.log(window.location.pathname);
-	console.log(window.location);
+
 	useEffect(() =>{
 		document.title = `TheWayShop | ${document.location.pathname.split('/')[1]}`
 	},[document.title]);
@@ -60,7 +59,7 @@ function Main(props) {
 							<Route path="/products/:productId/:productName?" component={() => <ProductDetail /> } />
 							<Route path="/wishlist" component={() => token ? <Wishlist /> : <Redirect to="/home" />} />
 							<Route path="/profile"  component={() => token ? <UserProfile /> : <Redirect to="/home" />} />
-							<Route path="/users/verify/:userId/:confirCode" component={() => <Redirect to="/home" />} />
+							<Route exact path="/users/verify/:userId/:confirCode" />
 							<Route path="/forgotpassword" component={() => <ForgotPasswordEnterEmail /> } />
 							<Route exact path="/users/forgotpassword/resetpassword/:userId/:confirResetPasswordCode" component={() => <ForgotPasswordEnterNewPass /> } />
 							

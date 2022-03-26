@@ -95,8 +95,8 @@ userRouter.get('/resendlink/:userId', cors.corsWithOpts, (req, res, next) => {
 });
 
 
-userRouter.get('/verify/:userId/:confirCode', cors.corsWithOpts, (req, res, next) => {
-
+userRouter.post('/verify/:userId/:confirCode', cors.corsWithOpts, (req, res, next) => {
+console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 	User.findOne({ _id: req.params.userId, confirmationCode: req.params.confirCode })
 	.then((user) =>{
 		if (user){

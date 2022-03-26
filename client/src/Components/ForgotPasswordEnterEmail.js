@@ -10,7 +10,6 @@ export default function ForgotPasswordEnterEmail() {
     const { register, handleSubmit, formState: { errors } } = useForm({ mode: "all" });
     const onSubmit = (data) => {
         dispatch(sendResetPasswordLink(data));
-        console.log(data);
     }
 
     return (

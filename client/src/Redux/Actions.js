@@ -645,7 +645,14 @@ export const resendConfirmationLink = (userId) =>{
 
 /////////////////////////////////{ VERIFY USER EMAIL }/////////////////////////////////
 export const verifyUser = (path) =>{
-    fetch(`${url}users/${path}`)
+
+    fetch(`${url}users/${path}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        credentials: 'same-origin'
+    })
     .then(res => res.json())
     .then(res => {
         if(res.success){
@@ -655,12 +662,12 @@ export const verifyUser = (path) =>{
             });
             setTimeout(() => {
                 window.location.replace(window.location.origin);
-            }, 2200);
+            }, 3000);
             
         }else{
             setTimeout(() => {
                 window.location.replace(window.location.origin);
-            }, 2200);
+            }, 3000);
             var error = new Error(res.statusMsg);
             throw error;
         }
