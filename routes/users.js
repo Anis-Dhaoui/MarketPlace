@@ -45,7 +45,7 @@ userRouter.post('/signup', cors.corsWithOpts, (req, res, next) => {
 								<h1>Email Confirmation</h1>
 								<h2>Hello ${req.body.firstname}</h2>
 								<p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-								<a href=${process.env.BASE_URL}/users/verify/${req.user._doc._id}/${confirCode}> Click here</a>
+								<a href=${process.env.BASE_URL_HEROKU}/users/verify/${req.user._doc._id}/${confirCode}> Click here</a>
 							</div>`
 							sendEmail(req.body.email, "The Way Shop | Confirm Email", message)
 
@@ -83,7 +83,7 @@ userRouter.get('/resendlink/:userId', cors.corsWithOpts, (req, res, next) => {
 				<h1>Email Confirmation</h1>
 				<h2>Hello ${user.firstname}</h2>
 				<p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-				<a href=${process.env.BASE_URL}/users/verify/${user._id}/${confirCode}> Click here</a>
+				<a href=${process.env.BASE_URL_HEROKU}/users/verify/${user._id}/${confirCode}> Click here</a>
 			</div>`
 			sendEmail(user.email, "The Way Shop | Confirm Email", message)
 
@@ -96,7 +96,6 @@ userRouter.get('/resendlink/:userId', cors.corsWithOpts, (req, res, next) => {
 
 
 userRouter.post('/verify/:userId/:confirCode', cors.corsWithOpts, (req, res, next) => {
-console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 	User.findOne({ _id: req.params.userId, confirmationCode: req.params.confirCode })
 	.then((user) =>{
 		if (user){
@@ -111,10 +110,10 @@ console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 					console.log("Account verified successfully");
 				}
 			})
-			// User.updateOne(
-			// 	{ _id: req.params.userId },
-			// 	{ $unset: { confirmationCode: ""} }
-			// ).exec();
+			User.updateOne(
+				{ _id: req.params.userId },
+				{ $unset: { confirmationCode: ""} }
+			).exec();
 		}else{
 			res.statusCode = 403;
 			res.setHeader('Content-Type', 'application/json');
@@ -156,7 +155,7 @@ userRouter.post('/forgotpassword/sendlink', cors.corsWithOpts, (req, res, next) 
 				<h1>Email Reset Password</h1>
 				<h2>Hello ${user.firstname}</h2>
 				<p>You or someone else requested to reset your password, if it was you, please click the link below to reset your password, othwise ignore this email</p>
-				<a href= ${process.env.BASE_URL}/users/forgotpassword/resetpassword/${user._id}/${confirResetPasswordCode}> Click here</a>
+				<a href= ${process.env.BASE_URL_HEROKU}/users/forgotpassword/resetpassword/${user._id}/${confirResetPasswordCode}> Click here</a>
 			</div>`
 			sendEmail(user.email, "The Way Shop | Reset Password", message)
 
