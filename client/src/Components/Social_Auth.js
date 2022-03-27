@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/social_auth.css';
 import { useDispatch } from 'react-redux';
 import { loginWithFb, loginWithGoogle } from '../Redux/Actions';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
@@ -18,7 +19,7 @@ export default function SocialAuth(props) {
         props.closeForm();
     };
     return (
-        <div className="d-flex justify-content-end social_icon">
+        <div className="d-flex justify-content-center social_icon">
             <FacebookLogin
                 appId='1747851355551259'
                 autoLoad={false}

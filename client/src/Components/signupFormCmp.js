@@ -18,8 +18,9 @@ function Signup(props) {
 
    return (
       <Modal id='signup-form' style={{ backgroundColor: "white" }} isOpen={props.isSignupOpen} toggle={props.toggleSignUp} contentClassName="login-modal p-3">
+         <SocialAuth closeForm={props.toggleSignUp} />
+
          <ModalHeader toggle={props.toggleSignUp} className="text-primary">Sign Up</ModalHeader>
-            <SocialAuth closeForm={props.toggleSignUp} />
          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
                <label htmlFor="firstname">First name</label>

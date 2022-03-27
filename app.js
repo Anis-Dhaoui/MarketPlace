@@ -26,10 +26,22 @@ mongoose.Promise = global.Promise;
 const url = process.env.mongoUrl;
 const connect = mongoose.connect(process.env.MONGODB_URI || url);
 connect.then((db) =>{
-  console.log("Connected to Mongodb Server Correctly... " + process.env.mongoUrl);
-}, (err) => console.log("Can not connect to Mongodb server... " + err));
+  console.log("Connected to Mongodb Server Correctly... " + db.connections[0]._connectionString);
+}, (err) => console.log("Cannot connect to Mongodb server... " + err));
 
 var app = express();
+
+
+// $$$$$$$$$$$$$$$$$$ Redirect all incomming http request to https $$$$$$$$$$$$$$$$$$
+// app.all('*', (req, res, next) => {
+//   if(req.secure){
+//     return next();
+//   }else{
+//     res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+//   }
+// });
+// $$$$$$$$$$$$$$$$$$ END $$$$$$$$$$$$$$$$$$
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

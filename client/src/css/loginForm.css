@@ -13,39 +13,8 @@ background-color: rgba(26, 71, 100, 0.61) !important;
     text-transform: uppercase;
 }
 
-.login-card .social_icon span{
-    font-size: 60px;
-    margin-left: 10px;
-    /* color: #FFC312; */
-}
-
-.social_icon .fa-facebook-square{
-    color: #3b5998;
-}
-.social_icon .fa-google-plus-square{
-    color: #4285F4;
-}
-.social_icon .fa-twitter-square{
-    color: 	#1DA1F2;
-}
-.social_icon .fa-linkedin-square{
-    color: 	#0072b1;
-}
-
-.login-card .social_icon .fa:hover{
-    opacity: 0.5;
-    cursor: pointer;
-}
-
 .login-card .card-header h3{
     color: white;
-}
-
-.login-card .social_icon{
-    position: absolute;
-    right: 134px;
-    top: -48px;
-    z-index: 9999;
 }
     
 .input-group-prepend span{
