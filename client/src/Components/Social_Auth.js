@@ -24,6 +24,7 @@ export default function SocialAuth(props) {
                 appId='1747851355551259'
                 autoLoad={false}
                 callback={fbResponse}
+                isMobile={false}
                 render={renderProps => (
                     <span data-for="fbAuth" data-tip="Login with Facebook"><i onClick={renderProps.onClick} className="fa fa-facebook-square"></i></span>
                 )}
