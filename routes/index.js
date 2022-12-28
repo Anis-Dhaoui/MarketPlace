@@ -5,10 +5,10 @@ var path = require('path');
 /* GET home page. */
 router.get('*', (req, res) => {
   console.log(req.path)
-  if (req.path != '/home') {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  } else {
+  if (req.originalUrl.includes('home')) {
     res.redirect('/');
+  } else {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
   }
   // res.redirect('/');
 });
