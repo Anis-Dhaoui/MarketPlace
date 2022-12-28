@@ -8,6 +8,7 @@ var session = require('express-session');
 var fileStore = require('session-file-store')(session);
 var passport = require('passport');
 require("dotenv").config();
+var helmet = require('helmet');
 
 // cronjob to remove users who has been registred since 3 days but they haven't verified their email yet
 var cronjob = require('./utils/cronjobUsers');
@@ -25,7 +26,7 @@ var wishListRouter = require('./routes/wishListRouter');
 mongoose.Promise = global.Promise;
 const url = process.env.mongoUrl;
 const connect = mongoose.connect(process.env.MONGODB_URI || url);
-connect.then((db) =>{
+connect.then((db) => {
   console.log("Connected to Mongodb Server Correctly... " + db.connections[0]._connectionString);
 }, (err) => console.log("Cannot connect to Mongodb server... " + err));
 
@@ -47,11 +48,13 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(helmet());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', usersRouter);
 app.use('/products', productRouter);
@@ -62,7 +65,7 @@ app.use('/uploadprodimgs', uploadProdImgsRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
@@ -76,7 +79,7 @@ app.use(function(req, res, next) {
 // })
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
