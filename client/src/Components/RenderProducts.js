@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import '../css/renderProducts.css';
 import formatDate from '../js/plugins';
-import {url} from '../shared_data/Url';
+import { url } from '../shared_data/Url';
 import AddToWishlist from './addToWishlistButton';
 import slugify from 'react-slugify';
 
@@ -29,21 +29,21 @@ export default function RenderProducts(props) {
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-      const newOffset = event.selected * productsPerPage % products.length;
-      setItemOffset(newOffset);
+        const newOffset = event.selected * productsPerPage % products.length;
+        setItemOffset(newOffset);
     };
 
     // $$$$$$$$$$$$$$$$$$$ RENDER PRODUCTS CARDS $$$$$$$$$$$$$$$$$$$ //
-    const buildProductCard = currentItems && currentItems.map((product) =>{
-        return(
+    const buildProductCard = currentItems && currentItems.map((product) => {
+        return (
             <div className="product-container col-12 col-sm-6 col-lg-4" key={product._id}>
                 <div className="product-imgs-content">
-                    <div id={'product-'+product._id} className="carousel slide carousel-fade">
+                    <div id={'product-' + product._id} className="carousel slide carousel-fade">
                         <ol className="carousel-indicators">
                             {
-                                product.images.slice(0, 4).map((item, index) =>{
-                                    return(
-                                        <li key={product._id + index} data-target={'#product-'+product._id} data-slide-to={index} className={index === 0 ? "active" : null}></li>
+                                product.images.slice(0, 4).map((item, index) => {
+                                    return (
+                                        <li key={product._id + index} data-target={'#product-' + product._id} data-slide-to={index} className={index === 0 ? "active" : null}></li>
                                     )
                                 })
                             }
@@ -51,20 +51,20 @@ export default function RenderProducts(props) {
                         <Link to={`/products/${product._id}/${slugify(product.name)}`} >
                             <div className="carousel-inner">
                                 {
-                                    product.images.slice(0, 4).map((item, index) =>{
-                                        return(
+                                    product.images.slice(0, 4).map((item, index) => {
+                                        return (
                                             <React.Fragment key={item}>
                                                 {
-                                                    index === 0 ? 
-                                                        <div className="carousel-item active"> 
+                                                    index === 0 ?
+                                                        <div className="carousel-item active">
                                                             <div className="card-img-overlay text-center">
                                                                 <i className="text-light">{formatDate(product.createdAt, '-')}</i>
                                                             </div>
-                                                            <img src={url + item} alt={product.title} />
+                                                            <img crossorigin="anonymous" src={url + item} alt={product.title} />
                                                         </div>
-                                                    :
+                                                        :
                                                         <div className="carousel-item">
-                                                            <img src={url + item} alt={product.title} />
+                                                            <img crossorigin="anonymous" src={url + item} alt={product.title} />
                                                         </div>
                                                 }
                                             </React.Fragment>
@@ -73,7 +73,7 @@ export default function RenderProducts(props) {
                                 }
                             </div>
                         </Link>
-                    </div> 
+                    </div>
                 </div>
 
                 <div className="title-price-like_content mb-5">
@@ -109,21 +109,21 @@ export default function RenderProducts(props) {
             </div>
             <div className="">
                 <div className="col-12 d-flex justify-content-center">
-                <ReactPaginate
-                pageCount={pageCount}
-                onPageChange={handlePageClick}
-                previousLabel={"<"}
-                nextLabel={">"}
-                disabledClassName={"disabledBtn"}
-                breakLabel={""}
-                breakClassName={"break-me"}
-                marginPagesDisplayed={1}
-                pageRangeDisplayed={5}
-                containerClassName={"pagination"}
-                subContainerClassName={"pages pagination"}
-                activeClassName={"active"}
-                renderOnZeroPageCount={null}
-            />
+                    <ReactPaginate
+                        pageCount={pageCount}
+                        onPageChange={handlePageClick}
+                        previousLabel={"<"}
+                        nextLabel={">"}
+                        disabledClassName={"disabledBtn"}
+                        breakLabel={""}
+                        breakClassName={"break-me"}
+                        marginPagesDisplayed={1}
+                        pageRangeDisplayed={5}
+                        containerClassName={"pagination"}
+                        subContainerClassName={"pages pagination"}
+                        activeClassName={"active"}
+                        renderOnZeroPageCount={null}
+                    />
                 </div>
             </div>
         </div>

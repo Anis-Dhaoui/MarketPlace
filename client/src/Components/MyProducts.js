@@ -8,6 +8,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateProduct, deleteProduct, deleteImages } from '../Redux/Actions';
+import slugify from 'react-slugify';
 
 export default function MyProducts(props) {
 
@@ -23,7 +24,7 @@ export default function MyProducts(props) {
     // The target plate that will be edited
     const [targetProduct, settargetProduct] = useState(null);
 
-// $$$$$$$$$$$$$$$$$$$$ BEGIN HANDLE DELETE PRODUCT $$$$$$$$$$$$$$$$$$$$
+    // $$$$$$$$$$$$$$$$$$$$ BEGIN HANDLE DELETE PRODUCT $$$$$$$$$$$$$$$$$$$$
     const HandleDeleteProduct = (productId, images) => {
         confirmAlert({
             customUI: ({ onClose }) => {
@@ -46,16 +47,16 @@ export default function MyProducts(props) {
             }
         });
     };
-// $$$$$$$$$$$$$$$$$$$$ END HANDLE DELETE PRODUCT $$$$$$$$$$$$$$$$$$$$
+    // $$$$$$$$$$$$$$$$$$$$ END HANDLE DELETE PRODUCT $$$$$$$$$$$$$$$$$$$$
 
-// $$$$$$$$$$$$$$$$$$$$ BEGIN HANDLE PUBLISH/UNPUBLISH PRODUCT $$$$$$$$$$$$$$$$$$$$
-    const publishUnpublishProduct = (productId, publishedOrNot) =>{
-        const body = {published: publishedOrNot}
+    // $$$$$$$$$$$$$$$$$$$$ BEGIN HANDLE PUBLISH/UNPUBLISH PRODUCT $$$$$$$$$$$$$$$$$$$$
+    const publishUnpublishProduct = (productId, publishedOrNot) => {
+        const body = { published: publishedOrNot }
         dispatch(updateProduct(productId, body));
         // console.log(productId);
         // console.log(publishedOrNot);
     };
-// $$$$$$$$$$$$$$$$$$$$ BEGIN HANDLE PUBLISH/UNPUBLISH PRODUCT $$$$$$$$$$$$$$$$$$$$
+    // $$$$$$$$$$$$$$$$$$$$ BEGIN HANDLE PUBLISH/UNPUBLISH PRODUCT $$$$$$$$$$$$$$$$$$$$
 
     var renderMyProducts = () => {
         if (products.loading) {
@@ -70,7 +71,7 @@ export default function MyProducts(props) {
                     return (
                         <div>
                             <h6 className="text-info text-center p-2"> Your Products Box is Empty! Thank You To Post Your First Product Now By Clicking On "Post new product" Tab.</h6>
-                            <div className="p-3 text-center"><img className="img-fluid" src="/assets/images/empty.gif" alt="empty" /></div>
+                            <div className="p-3 text-center"><img crossorigin="anonymous" className="img-fluid" src="/assets/images/empty.gif" alt="empty" /></div>
                         </div>
                     )
                 } else
@@ -80,7 +81,7 @@ export default function MyProducts(props) {
                                 <div key={item._id}>
                                     <div className="row d-flex align-items-center">
                                         <div className="col-12 col-md-2 border-right d-flex justify-content-center">
-                                            <img className="rounded responsive-image" src={url + item.images[0]} width="100%" height="100px" alt={item.name} />
+                                            <img crossorigin="anonymous" className="rounded responsive-image" src={url + item.images[0]} width="100%" height="100px" alt={item.name} />
                                         </div>
                                         <div className="col-12 col-md-4 border-right d-flex justify-content-center">
                                             <p className="text-uppercase">{item.name}</p>
@@ -96,7 +97,7 @@ export default function MyProducts(props) {
                                             <div className="row">
                                                 <button onClick={() => { settargetProduct(item); toggle() }} className="col-4 border-right fa fa-pencil btn btn-warning"></button>
                                                 <button onClick={() => HandleDeleteProduct(item._id, item.images)} className="col-4 border-right fa fa-trash btn btn-danger"></button>
-                                                <Link to={`/products/${item._id}`} className="col-4 fa fa-eye btn btn-success"></Link>
+                                                <Link to={`/products/${item._id}/${slugify(item.name)}`} className="col-4 fa fa-eye btn btn-success"></Link>
                                             </div>
                                         </div>
                                     </div>

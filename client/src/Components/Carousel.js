@@ -53,7 +53,7 @@ const SlideShow = (props) => {
         onExited={() => setAnimating(false)}
         key={item.src}
       >
-        <img src={item.src} alt={item.altText} width="100%" height="400px" />
+        <img crossorigin="anonymous" src={item.src} alt={item.altText} width="100%" height="400px" />
         <div className="carousel-overlay"></div>
         <CarouselCaption captionText={item.caption} captionHeader={item.caption} style={{ display: "block" }} />
       </CarouselItem>
@@ -61,17 +61,17 @@ const SlideShow = (props) => {
   });
 
   return (
-      <Carousel
-        id="top-header-carousel"
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-      >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-      </Carousel>
+    <Carousel
+      id="top-header-carousel"
+      activeIndex={activeIndex}
+      next={next}
+      previous={previous}
+    >
+      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+      {slides}
+      <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+      <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+    </Carousel>
   );
 }
 

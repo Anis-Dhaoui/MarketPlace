@@ -10,17 +10,17 @@ function Home(props) {
     const products = state.products;
     const auth = state.auth;
 
-    return(
+    return (
         <div className="container-fluid px-4">
             <div className="row mt-5">
                 <div className="col">
-                {
-                    products.loading ? <Loading />
-                    : products.errMsg ? <h5 className="text-danger">{products.errMsg}</h5>
+                    {
+                        products.loading ? <Loading />
+                            : products.errMsg ? <h5 className="text-danger">{products.errMsg}</h5>
 
-                    : <MostRecentProd 
-                        products={products} />
-                }
+                                : <MostRecentProd
+                                    products={products} />
+                    }
                 </div>
             </div>
             <hr />
@@ -28,13 +28,13 @@ function Home(props) {
             <div className="row">
                 {
                     products.loading ? <Loading />
-                    : products.errMsg ? <h5 className="text-danger">{products.errMsg}</h5>
+                        : products.errMsg ? <h5 className="text-danger">{products.errMsg}</h5>
 
-                    :  <>   <h3 className="text-info mx-auto">All Products</h3>
-                            <RenderProducts products={products}
-                                authCheck={auth.isAuthenticated}
-                                productsPerPage={9}
-                            /> </>
+                            : <>   <h3 className="text-info mx-auto">All Products</h3>
+                                <RenderProducts products={products}
+                                    authCheck={auth.isAuthenticated}
+                                    productsPerPage={9}
+                                /> </>
                 }
             </div>
             <hr />

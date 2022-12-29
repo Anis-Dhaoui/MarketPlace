@@ -4,13 +4,7 @@ var path = require('path');
 
 /* GET home page. */
 router.get('*', (req, res) => {
-  console.log(req.path)
-  if (req.originalUrl.includes('home')) {
-    res.redirect('/');
-  } else {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  }
-  // res.redirect('/');
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 module.exports = router;

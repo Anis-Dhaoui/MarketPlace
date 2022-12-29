@@ -6,7 +6,7 @@ import { validatePassword } from '../js/plugins';
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser, uploadImgs, deleteImages } from '../Redux/Actions';
-import { getRandomColor, createImageFromInitials} from '../js/ProfileImgGenerator';
+import { getRandomColor, createImageFromInitials } from '../js/ProfileImgGenerator';
 
 export default function ProfileSetting(props) {
 
@@ -78,8 +78,8 @@ export default function ProfileSetting(props) {
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="avatar-wrapper">
-                                <img src={user.avatar !== undefined ? url + user.avatar
-												  : createImageFromInitials(500, `${user.firstname} ${user.lastname}`, getRandomColor())}
+                                <img crossorigin="anonymous" src={user.avatar !== undefined ? url + user.avatar
+                                    : createImageFromInitials(500, `${user.firstname} ${user.lastname}`, getRandomColor())}
                                     className="profile-pic" alt="avatar" />
                                 <div className="upload-button">
                                     <i className="fa fa-arrow-circle-up" aria-hidden="true"></i>

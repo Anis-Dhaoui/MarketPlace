@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/testimonials.css';
 
 export default function Testimonial(props) {
-    const feedback =[
+    const feedback = [
         {
             "id": "01",
             "feedback": "I found my car on TheWayShop for a good deal. I am satisfied with the service",
@@ -26,14 +26,14 @@ export default function Testimonial(props) {
     ]
 
     const ShowFeedback = feedback.filter((item, index) => index <= 2)
-        .map(item =>{
-            return(
+        .map(item => {
+            return (
                 <div className={item.id === "01" ? "carousel-item active" : "carousel-item"} key={item.id}>
                     <blockquote>
                         <div className="row d-flex justify-content-center">
                             <div className="col-sm-8 col-sm-offset-2">
                                 <p> {item.feedback} </p>
-                                <small> 
+                                <small>
                                     {item.name}
                                 </small>
                             </div>
@@ -48,11 +48,11 @@ export default function Testimonial(props) {
             <div id="quote-carousel" className="carousel slide" data-ride="carousel" data-interval="2000">
                 {/* <!-- Bottom Carousel Indicators --> */}
                 <ol className="carousel-indicators">
-                    <img data-target="#quote-carousel" data-slide-to="0" className="active" 
+                    <img crossorigin="anonymous" data-target="#quote-carousel" data-slide-to="0" className="active"
                         src="/assets/testimonials-images/1.jpg" alt="2" />
-                    <img data-target="#quote-carousel" data-slide-to="1" 
+                    <img crossorigin="anonymous" data-target="#quote-carousel" data-slide-to="1"
                         src="/assets/testimonials-images/2.jpg" alt="3" />
-                    <img data-target="#quote-carousel" data-slide-to="2" 
+                    <img crossorigin="anonymous" data-target="#quote-carousel" data-slide-to="2"
                         src="/assets/testimonials-images/3.jpg" alt="4" />
                 </ol>
 
@@ -65,7 +65,7 @@ export default function Testimonial(props) {
                     <span className="sr-only">Previous</span>
                 </a>
                 <a className="carousel-control-next xxx" href="#quote-carousel" role="button" data-slide="next">
-                <i className="fa fa-chevron-right xxx"></i>
+                    <i className="fa fa-chevron-right xxx"></i>
                     <span className="sr-only">Next</span>
                 </a>
             </div>

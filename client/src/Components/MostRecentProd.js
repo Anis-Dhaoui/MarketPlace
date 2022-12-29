@@ -6,7 +6,7 @@ import { url } from '../shared_data/Url';
 import { Link } from 'react-router-dom';
 import slugify from 'react-slugify';
 
-export default function MostRecentProd (props){
+export default function MostRecentProd(props) {
 
     const sortedProducts = props.products.products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     const products = sortedProducts.filter(item => item.published);
@@ -14,43 +14,43 @@ export default function MostRecentProd (props){
     // Some jquery to set time between slide show and to show 3 cards together while sliding
     useEffect(() => {
         window.$('#recentProductsSlideShow').carousel({
-        interval: 5000
+            interval: 5000
         })
-    
-        $('#recentProductsSlideShow.carousel .carousel-item').each(function(){
+
+        $('#recentProductsSlideShow.carousel .carousel-item').each(function () {
             var minPerSlide = 3;
             var next = $(this).next();
             if (!next.length) {
-            next = $(this).siblings(':first');
+                next = $(this).siblings(':first');
             }
             next.children(':first-child').clone().appendTo($(this));
-            
-            for (var i=0;i<minPerSlide;i++) {
-                next=next.next();
+
+            for (var i = 0; i < minPerSlide; i++) {
+                next = next.next();
                 if (!next.length) {
                     next = $(this).siblings(':first');
                 }
-                
+
                 next.children(':first-child').clone().appendTo($(this));
             }
         });
     }, [sortedProducts]);
 
     //Render carousel Items that contains products
-    const renderMostRecentProducts = products.slice(0, 9).map((product, index) =>{
-        return(
+    const renderMostRecentProducts = products.slice(0, 9).map((product, index) => {
+        return (
             <div className={index === 0 ? "carousel-item active" : "carousel-item"} key={product._id}>
                 <div className="col-md-4 mb-3">
-                    <div className="card" style={{height:"400px", minHeight:"400px"}}>
+                    <div className="card" style={{ height: "400px", minHeight: "400px" }}>
                         <div>
                             <Link to={`/products/${product._id}/${slugify(product.name)}`} >
-                                <img className="img-fluid" style={{height:"300px", maxHeight:"300px"}} width="100%" alt={product.name} src={url + product.images[0]} />
+                                <img className="img-fluid" style={{ height: "300px", maxHeight: "300px" }} width="100%" alt={product.name} src={url + product.images[0]} />
                             </Link>
                         </div>
                         <div className="card-body">
                             <h5 className="card-title text-center text-uppercase">{product.name}</h5>
                             <div className="row">
-                                <p style={{fontSize:"14px"}} className="col-6 card-text text-muted">{formatDate(product.createdAt, '-')}</p>
+                                <p style={{ fontSize: "14px" }} className="col-6 card-text text-muted">{formatDate(product.createdAt, '-')}</p>
                                 <p className="col card-text text-right lead">{"$" + product.price}</p>
                             </div>
                         </div>
