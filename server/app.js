@@ -9,6 +9,7 @@ var fileStore = require('session-file-store')(session);
 var passport = require('passport');
 require("dotenv").config();
 var helmet = require('helmet');
+const cors = require('cors');
 // cronjob to remove users who has been registred since 3 days but they haven't verified their email yet
 var cronjob = require('./utils/cronjobUsers');
 var User = require('./models/userSchema');
@@ -47,6 +48,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors());
 app.use(helmet({
   contentSecurityPolicy: false, // disable Content Security Policy
   crossOriginResourcePolicy: { policy: 'cross-origin' }, // set Cross-Origin Resource Policy to 'cross-origin'
