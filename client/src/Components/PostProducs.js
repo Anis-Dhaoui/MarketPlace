@@ -204,7 +204,7 @@ export default function PostProducts(props) {
                                     {selectedImgs !== undefined ?
                                         null
                                         :
-                                        <img crossorigin="anonymous" alt="imagePlaceholder" height="95%" width="95%" className="img-prev"
+                                        <img crossOrigin="anonymous" alt="imagePlaceholder" height="95%" width="95%" className="img-prev"
                                             src="/assets/images/noimage-420x273.jpg"
                                         />
                                     }

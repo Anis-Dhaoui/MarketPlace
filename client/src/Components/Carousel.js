@@ -53,7 +53,7 @@ const SlideShow = (props) => {
         onExited={() => setAnimating(false)}
         key={item.src}
       >
-        <img crossorigin="anonymous" src={item.src} alt={item.altText} width="100%" height="400px" />
+        <img crossOrigin="anonymous" src={item.src} alt={item.altText} width="100%" height="400px" />
         <div className="carousel-overlay"></div>
         <CarouselCaption captionText={item.caption} captionHeader={item.caption} style={{ display: "block" }} />
       </CarouselItem>

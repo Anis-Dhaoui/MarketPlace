@@ -22,7 +22,7 @@ export default function Wishlist(props) {
 			return (
 				<div id="wish-list-items" className={index % 2 === 0 ? "row bgLightGray mb-2 p-2" : "row bgLight mb-2 p-2"} key={item._id}>
 					<div className="d-flex align-items-center justify-content-center col-12 col-md-2">
-						<img crossorigin="anonymous" className="rounded" src={url + item.images[0]} width="100%" height="110px" alt={item.name} />
+						<img crossOrigin="anonymous" className="rounded" src={url + item.images[0]} width="100%" height="110px" alt={item.name} />
 						<Link to={`/products/${item._id}/${slugify(item.name)}`} >
 							<div id="wishlist-view-product" className="card-img-overlay d-flex justify-content-center align-items-center">
 								<i className="fa fa-eye fa-4x" aria-hidden="true"></i>

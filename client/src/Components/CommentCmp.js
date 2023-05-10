@@ -88,7 +88,7 @@ export default function CommentCmp(props) {
             >
                 <div className="row mb-3">
                     <div className="col-12 col-md-8 col-sm-12 d-flex justify-content-md-start justify-content-center">
-                        <img crossorigin="anonymous"
+                        <img crossOrigin="anonymous"
                             src={item.user.avatar !== undefined && item.user.avatar.includes('http') ? item.user.avatar
                                 : item.user.avatar !== undefined ? url + item.user.avatar
                                     : createImageFromInitials(500, `${item.user.firstname} ${item.user.lastname}`, getRandomColor

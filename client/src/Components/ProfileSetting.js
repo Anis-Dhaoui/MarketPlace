@@ -78,7 +78,7 @@ export default function ProfileSetting(props) {
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="avatar-wrapper">
-                                <img crossorigin="anonymous" src={user.avatar !== undefined ? url + user.avatar
+                                <img crossOrigin="anonymous" src={user.avatar !== undefined ? url + user.avatar
                                     : createImageFromInitials(500, `${user.firstname} ${user.lastname}`, getRandomColor())}
                                     className="profile-pic" alt="avatar" />
                                 <div className="upload-button">

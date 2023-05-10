@@ -42,7 +42,7 @@ export default function SearchProducts(props) {
               <Link to={`/products/${product._id}`} key={product._id}>
                 <li className={index % 2 === 0 ? "row bgLightGray mb-1" : "row bgLight mb-1"}>
                   <div className="col-2">
-                    <img crossorigin="anonymous" className="rounded" src={url + product.images[0]} width="50px" height="50px" alt={product.name} />
+                    <img crossOrigin="anonymous" className="rounded" src={url + product.images[0]} width="50px" height="50px" alt={product.name} />
                   </div>
                   <div className="d-flex align-items-center col-10">
                     <h6 className="mx-auto mx-md-0 text-uppercase">{product.name}</h6>

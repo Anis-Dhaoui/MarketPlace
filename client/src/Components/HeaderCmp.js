@@ -66,7 +66,7 @@ function Header() {
 						auth.isAuthenticated ?
 							<div className="nav-item avatar-mobile dropdown">
 								<button data-toggle="dropdown" className="border-0 nav-link" style={{ color: "white", backgroundColor: "transparent" }}>
-									<img crossorigin="anonymous"
+									<img crossOrigin="anonymous"
 										src={auth.user.avatar !== undefined && auth.user.avatar.includes('http') ? auth.user.avatar
 											: auth.user.avatar !== undefined ? url + auth.user.avatar
 												: createImageFromInitials(500, `${auth.user.firstname} ${auth.user.lastname}`, getRandomColor())
@@ -141,7 +141,7 @@ function Header() {
 								<div className="nav-item dropdown d-none d-md-block">
 									{/* $$$$$ ###DESKTOP MODE### WHEN USER IS AUTHENTICATED SHOW A HIS AVATAR $$$$$*/}
 									<button data-toggle="dropdown" className="border-0 nav-link" style={{ color: "white", backgroundColor: "transparent" }}>
-										<img crossorigin="anonymous"
+										<img crossOrigin="anonymous"
 											src={auth.user.avatar !== undefined && auth.user.avatar.includes('http') ? auth.user.avatar
 												: auth.user.avatar !== undefined ? url + auth.user.avatar
 													: createImageFromInitials(500, `${auth.user.firstname} ${auth.user.lastname}`, getRandomColor())

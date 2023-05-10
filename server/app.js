@@ -9,7 +9,6 @@ var fileStore = require('session-file-store')(session);
 var passport = require('passport');
 require("dotenv").config();
 var helmet = require('helmet');
-
 // cronjob to remove users who has been registred since 3 days but they haven't verified their email yet
 var cronjob = require('./utils/cronjobUsers');
 var User = require('./models/userSchema');
@@ -48,13 +47,19 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// app.use(helmet());
-// This disables the `contentSecurityPolicy` middleware but keeps the rest.
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
+app.use(helmet({
+  contentSecurityPolicy: false, // disable Content Security Policy
+  crossOriginResourcePolicy: { policy: 'cross-origin' }, // set Cross-Origin Resource Policy to 'cross-origin'
+  dnsPrefetchControl: { allow: true }, // enable DNS prefetching
+  frameguard: { action: 'same-origin' }, // set X-Frame-Options header to 'SAMEORIGIN'
+  hidePoweredBy: { setTo: 'PHP 7.4.3' }, // set X-Powered-By header to 'PHP 7.4.3'
+  hsts: { maxAge: 31536000, includeSubDomains: true }, // enable HTTP Strict Transport Security
+  ieNoOpen: true, // set X-Download-Options header to 'noopen'
+  noSniff: true, // set X-Content-Type-Options header to 'nosniff'
+  referrerPolicy: { policy: 'same-origin' }, // set Referrer-Policy header to 'same-origin'
+  xssFilter: { setOnOldIE: true } // enable X-XSS-Protection header and set it to '1; mode=block'
+}));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

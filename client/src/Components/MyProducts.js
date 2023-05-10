@@ -71,7 +71,7 @@ export default function MyProducts(props) {
                     return (
                         <div>
                             <h6 className="text-info text-center p-2"> Your Products Box is Empty! Thank You To Post Your First Product Now By Clicking On "Post new product" Tab.</h6>
-                            <div className="p-3 text-center"><img crossorigin="anonymous" className="img-fluid" src="/assets/images/empty.gif" alt="empty" /></div>
+                            <div className="p-3 text-center"><img crossOrigin="anonymous" className="img-fluid" src="/assets/images/empty.gif" alt="empty" /></div>
                         </div>
                     )
                 } else
@@ -81,7 +81,7 @@ export default function MyProducts(props) {
                                 <div key={item._id}>
                                     <div className="row d-flex align-items-center">
                                         <div className="col-12 col-md-2 border-right d-flex justify-content-center">
-                                            <img crossorigin="anonymous" className="rounded responsive-image" src={url + item.images[0]} width="100%" height="100px" alt={item.name} />
+                                            <img crossOrigin="anonymous" className="rounded responsive-image" src={url + item.images[0]} width="100%" height="100px" alt={item.name} />
                                         </div>
                                         <div className="col-12 col-md-4 border-right d-flex justify-content-center">
                                             <p className="text-uppercase">{item.name}</p>

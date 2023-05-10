@@ -60,11 +60,11 @@ export default function RenderProducts(props) {
                                                             <div className="card-img-overlay text-center">
                                                                 <i className="text-light">{formatDate(product.createdAt, '-')}</i>
                                                             </div>
-                                                            <img crossorigin="anonymous" src={url + item} alt={product.title} />
+                                                            <img crossOrigin="anonymous" src={url + item} alt={product.title} />
                                                         </div>
                                                         :
                                                         <div className="carousel-item">
-                                                            <img crossorigin="anonymous" src={url + item} alt={product.title} />
+                                                            <img crossOrigin="anonymous" src={url + item} alt={product.title} />
                                                         </div>
                                                 }
                                             </React.Fragment>

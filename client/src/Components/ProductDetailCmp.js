@@ -35,7 +35,7 @@ function ProductDetail() {
                                     {
                                         product.images.map((item, index) =>
                                             <div key={"preview-pic-" + index} className={index === 0 ? "tab-pane active" : "tab-pane"} id={"pic-" + index}>
-                                                <img crossorigin="anonymous" src={url + item} alt={product.name} />
+                                                <img crossOrigin="anonymous" src={url + item} alt={product.name} />
                                             </div>
                                         )
                                     }
@@ -46,7 +46,7 @@ function ProductDetail() {
                                             /* eslint-disable */
                                             <li key={"thumbnail-" + index} className={index === 0 ? "active" : null}>
                                                 <a data-target={"#pic-" + index} data-toggle="tab">
-                                                    <img crossorigin="anonymous" src={url + item} alt={product.name} />
+                                                    <img crossOrigin="anonymous" src={url + item} alt={product.name} />
                                                 </a>
                                             </li>
                                             /* eslint-disable */

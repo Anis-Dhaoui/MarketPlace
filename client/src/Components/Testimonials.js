@@ -48,11 +48,11 @@ export default function Testimonial(props) {
             <div id="quote-carousel" className="carousel slide" data-ride="carousel" data-interval="2000">
                 {/* <!-- Bottom Carousel Indicators --> */}
                 <ol className="carousel-indicators">
-                    <img crossorigin="anonymous" data-target="#quote-carousel" data-slide-to="0" className="active"
+                    <img crossOrigin="anonymous" data-target="#quote-carousel" data-slide-to="0" className="active"
                         src="/assets/testimonials-images/1.jpg" alt="2" />
-                    <img crossorigin="anonymous" data-target="#quote-carousel" data-slide-to="1"
+                    <img crossOrigin="anonymous" data-target="#quote-carousel" data-slide-to="1"
                         src="/assets/testimonials-images/2.jpg" alt="3" />
-                    <img crossorigin="anonymous" data-target="#quote-carousel" data-slide-to="2"
+                    <img crossOrigin="anonymous" data-target="#quote-carousel" data-slide-to="2"
                         src="/assets/testimonials-images/3.jpg" alt="4" />
                 </ol>
 
