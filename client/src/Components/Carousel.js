@@ -10,18 +10,18 @@ import {
 const items = [
   {
     src: '/assets/Carousel_Images/image_1.jpg',
-    altText: 'Slide 1',
-    caption: 'Slide 1'
+    altText: 'Selling only the best things online',
+    caption: 'It is more than just sales'
   },
   {
     src: '/assets/Carousel_Images/image_2.jpg',
-    altText: 'Slide 2',
-    caption: 'Slide 2'
+    altText: 'More than just a reliable e-commerce platform',
+    caption: 'We will not let you down'
   },
   {
     src: '/assets/Carousel_Images/image_3.jpg',
-    altText: 'Slide 3',
-    caption: 'Slide 3'
+    altText: 'Real e-commerce adventure',
+    caption: 'Your e-commerce venture starts here'
   }
 ];
 
@@ -55,7 +55,7 @@ const SlideShow = (props) => {
       >
         <img crossOrigin="anonymous" src={item.src} alt={item.altText} width="100%" height="400px" />
         <div className="carousel-overlay"></div>
-        <CarouselCaption captionText={item.caption} captionHeader={item.caption} style={{ display: "block" }} />
+        <CarouselCaption captionText={item.caption} captionHeader={item.altText} style={{ display: "block" }} />
       </CarouselItem>
     );
   });
