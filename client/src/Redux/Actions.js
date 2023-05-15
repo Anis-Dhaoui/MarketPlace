@@ -534,6 +534,7 @@ export const loginWithFb = (accessToken) => (dispatch) =>{
 
 /////////////////////////////////{ HANDLE LOGIN WITH GOOGLE OAUTH-2 }/////////////////////////////////
 export const loginWithGoogle = (accessToken) => (dispatch) =>{
+    console.log(accessToken)
 
     fetch(`${url}users/google/token`,{
         method: 'GET',
