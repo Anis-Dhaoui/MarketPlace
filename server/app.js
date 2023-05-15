@@ -34,13 +34,13 @@ var app = express();
 
 
 // $$$$$$$$$$$$$$$$$$ Redirect all incomming http request to https $$$$$$$$$$$$$$$$$$
-// app.all('*', (req, res, next) => {
-//   if(req.secure){
-//     return next();
-//   }else{
-//     res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
-//   }
-// });
+app.all('*', (req, res, next) => {
+  if (req.secure) {
+    return next();
+  } else {
+    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+  }
+});
 // $$$$$$$$$$$$$$$$$$ END $$$$$$$$$$$$$$$$$$
 
 
@@ -67,7 +67,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'public/build')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', usersRouter);
 app.use('/products', productRouter);

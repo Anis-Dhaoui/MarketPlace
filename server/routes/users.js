@@ -45,7 +45,7 @@ userRouter.post('/signup', cors.corsWithOpts, (req, res, next) => {
 								<h1>Email Confirmation</h1>
 								<h2>Hello ${req.body.firstname}</h2>
 								<p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-								<a href=${process.env.BASE_URL_HEROKU}/users/verify/${req.user._doc._id}/${confirCode}> Click here</a>
+								<a href=${process.env.BASE_URL}/users/verify/${req.user._doc._id}/${confirCode}> Click here</a>
 							</div>`
 							sendEmail(req.body.email, "The Way Shop | Confirm Email", message)
 
@@ -83,7 +83,7 @@ userRouter.get('/resendlink/:userId', cors.corsWithOpts, (req, res, next) => {
 				<h1>Email Confirmation</h1>
 				<h2>Hello ${user.firstname}</h2>
 				<p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-				<a href=${process.env.BASE_URL_HEROKU}/users/verify/${user._id}/${confirCode}> Click here</a>
+				<a href=${process.env.BASE_URL}/users/verify/${user._id}/${confirCode}> Click here</a>
 			</div>`
 			sendEmail(user.email, "The Way Shop | Confirm Email", message)
 
@@ -155,7 +155,7 @@ userRouter.post('/forgotpassword/sendlink', cors.corsWithOpts, (req, res, next) 
 				<h1>Email Reset Password</h1>
 				<h2>Hello ${user.firstname}</h2>
 				<p>You or someone else requested to reset your password, if it was you, please click the link below to reset your password, othwise ignore this email</p>
-				<a href= ${process.env.BASE_URL_HEROKU}/users/forgotpassword/resetpassword/${user._id}/${confirResetPasswordCode}> Click here</a>
+				<a href= ${process.env.BASE_URL}/users/forgotpassword/resetpassword/${user._id}/${confirResetPasswordCode}> Click here</a>
 			</div>`
 			sendEmail(user.email, "The Way Shop | Reset Password", message)
 
@@ -293,6 +293,7 @@ userRouter.get('/facebook/token', cors.corsWithOpts, (passport.authenticate('fac
 });
 
 userRouter.get('/google/token', cors.corsWithOpts, (passport.authenticate('google-token')), (req, res) =>{
+	console.log("GooooooooooooooooooooooooooooooooooooooooooooooooooooooooooGLE")
     if (req.user){
 		var token = auth.getToken({ _id: req.user._id });
 		res.statusCode = 200;

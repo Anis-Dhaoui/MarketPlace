@@ -54,6 +54,7 @@ exports.facebookPassport = passport.use(new FacebookStrategy(
         //  profileFields: ['id', 'displayName', 'picture.type(large)', 'email', 'birthday', 'friends', 'first_name', 'last_name', 'middle_name', 'gender', 'link']
     },
     (accessToken, refreshToken, profile, done) =>{
+
         User.findOne({facebookId: profile.id}, (err, user) =>{
             if (err){
                 return done(err, false);

@@ -5,7 +5,10 @@
 // export const url = 'http://localhost:3000/';
 
 // NODEJS HTTPS SERVER URL
-export const url = 'https://localhost:3443/';
+// export const url = 'https://localhost:3443/';
 
-// PRODUCTION SERVER URL
+// HEROKU SERVER URL
 // export const url = '/';
+
+// RENDER SERVER URL
+export const url = 'https://thewayshop-api.onrender.com/';
