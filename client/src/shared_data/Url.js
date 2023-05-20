@@ -11,4 +11,11 @@
 // export const url = '/';
 
 // RENDER SERVER URL
-export const url = 'https://thewayshop-api.onrender.com/';
+// export const url = 'https://thewayshop-api.onrender.com/';
+
+export let url;
+if(process.env.NODE_ENV === 'development'){
+    url = 'https://localhost:3443/';
+}else{
+    url = 'https://thewayshop-api.onrender.com/' 
+}

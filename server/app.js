@@ -14,6 +14,8 @@ const cors = require('cors');
 var cronjob = require('./utils/cronjobUsers');
 var User = require('./models/userSchema');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/productRouter');
@@ -34,13 +36,13 @@ var app = express();
 
 
 // $$$$$$$$$$$$$$$$$$ Redirect all incomming http request to https $$$$$$$$$$$$$$$$$$
-// app.all('*', (req, res, next) => {
-//   if (req.secure) {
-//     return next();
-//   } else {
-//     res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
-//   }
-// });
+app.all('*', (req, res, next) => {
+  if (req.secure) {
+    return next();
+  } else {
+    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+  }
+});
 // $$$$$$$$$$$$$$$$$$ END $$$$$$$$$$$$$$$$$$
 
 
