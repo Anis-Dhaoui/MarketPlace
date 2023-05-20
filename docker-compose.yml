@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.server
+    image: marketplace-server
+    container_name: marketplace-container-server
+    command: npm start
+    volumes:
+      - ./server/:/usr/src/marketplace/server
+      # - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    # depends_on:
+    #   - mongo
+    env_file: ./server/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - marketplace-network
+
+  # mongo:
+  #   image: mongo
+  #   volumes:
+  #     - marketplace_db:/data/db
+  #   ports:
+  #     - "27017:27017"
+  #   networks:
+  #     - marketplace-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.client
+    image: marketplace-client
+    container_name: marketplace-container-client
+    command: yarn start
+    volumes:
+      - ./client/:/usr/src/marketplace/client
+      # - /usr/app/node_modules # Exclude node_modules folder ==> it's commented because I excluded it in .dockerignore file
+    depends_on:
+      - server
+    ports:
+      - "3001:3001"
+    networks:
+      - marketplace-network
+
+networks:
+    marketplace-network:
+        driver: bridge
+
+# volumes:
+#     data-volume:
+#     node_modules:
+#     web-root:
+#       driver: local
