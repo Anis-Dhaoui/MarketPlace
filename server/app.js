@@ -36,13 +36,15 @@ var app = express();
 
 
 // $$$$$$$$$$$$$$$$$$ Redirect all incomming http request to https $$$$$$$$$$$$$$$$$$
-app.all('*', (req, res, next) => {
-  if (req.secure) {
-    return next();
-  } else {
-    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
-  }
-});
+if (process.env.NODE_ENV === 'development') {
+  app.all('*', (req, res, next) => {
+    if (req.secure) {
+      return next();
+    } else {
+      res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+    }
+  });
+}
 // $$$$$$$$$$$$$$$$$$ END $$$$$$$$$$$$$$$$$$
 
 
