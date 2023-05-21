@@ -15,7 +15,9 @@
 
 export let url;
 if(process.env.NODE_ENV === 'development'){
+    console.log('Running in DEVELOPMENT mode');
     url = 'https://localhost:3443/';
 }else{
+    console.log('Running in PRODUCTION mode');
     url = 'https://thewayshop-api.onrender.com/' 
 }
