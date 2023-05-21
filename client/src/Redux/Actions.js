@@ -5,6 +5,7 @@ import { toast, Slide, Zoom, Flip, Bounce } from "react-toastify";
 
 /////////////////////////////////{ FETCH COMMENTS }/////////////////////////////////
 export const fetchComments = () => (dispatch) =>{
+    console.log(url)
 
     dispatch(commentsLoading(true));
 
