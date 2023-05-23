@@ -6,6 +6,13 @@ var auth = require('../auth');
 const cors = require('./cors');
 var sendEmail = require('../utils/email');
 
+var base_url;
+if (process.env.NODE_ENV === 'development') {
+	base_url = process.env.DEV_SEC_URL;
+}else{
+	base_url = process.env.PROD_URL;
+}
+
 userRouter.options('*', cors.corsWithOpts, (req, res) => res.status = 200)
 /* GET users listing. */
 userRouter.get('/', cors.corsWithOpts, function (req, res, next) {
@@ -45,7 +52,7 @@ userRouter.post('/signup', cors.corsWithOpts, (req, res, next) => {
 								<h1>Email Confirmation</h1>
 								<h2>Hello ${req.body.firstname}</h2>
 								<p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-								<a href=${process.env.BASE_URL}/users/verify/${req.user._doc._id}/${confirCode}> Click here</a>
+								<a href=${base_url}/users/verify/${req.user._doc._id}/${confirCode}> Click here</a>
 							</div>`
 							sendEmail(req.body.email, "The Way Shop | Confirm Email", message)
 
@@ -83,7 +90,7 @@ userRouter.get('/resendlink/:userId', cors.corsWithOpts, (req, res, next) => {
 				<h1>Email Confirmation</h1>
 				<h2>Hello ${user.firstname}</h2>
 				<p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-				<a href=${process.env.BASE_URL}/users/verify/${user._id}/${confirCode}> Click here</a>
+				<a href=${base_url}/users/verify/${user._id}/${confirCode}> Click here</a>
 			</div>`
 			sendEmail(user.email, "The Way Shop | Confirm Email", message)
 
@@ -155,7 +162,7 @@ userRouter.post('/forgotpassword/sendlink', cors.corsWithOpts, (req, res, next) 
 				<h1>Email Reset Password</h1>
 				<h2>Hello ${user.firstname}</h2>
 				<p>You or someone else requested to reset your password, if it was you, please click the link below to reset your password, othwise ignore this email</p>
-				<a href= ${process.env.BASE_URL}/users/forgotpassword/resetpassword/${user._id}/${confirResetPasswordCode}> Click here</a>
+				<a href= ${base_url}/users/forgotpassword/resetpassword/${user._id}/${confirResetPasswordCode}> Click here</a>
 			</div>`
 			sendEmail(user.email, "The Way Shop | Reset Password", message)
 

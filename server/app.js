@@ -33,7 +33,7 @@ connect.then((db) => {
 }, (err) => console.log("Cannot connect to Mongodb server... " + err));
 
 var app = express();
-
+console.log(process.env.NODE_ENV)
 
 // $$$$$$$$$$$$$$$$$$ Redirect all incomming http request to https $$$$$$$$$$$$$$$$$$
 if (process.env.NODE_ENV === 'development') {
