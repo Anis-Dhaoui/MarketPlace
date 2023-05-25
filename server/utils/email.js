@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
-const sendinblueTransport = require('nodemailer-sendinblue-transport');
+const Transport = require("nodemailer-sendinblue-transport");
+// const sendinblueTransport = require('nodemailer-sendinblue-transport');
 
 // const transporter = nodemailer.createTransport(
 //   sendinblueTransport({
@@ -22,12 +23,17 @@ const sendinblueTransport = require('nodemailer-sendinblue-transport');
 //   }
 // });
 
+
 const sendEmail = (email, subject, message) => {
   const transporter = nodemailer.createTransport(
-    sendinblueTransport({
-      apiKey: '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'
-    })
-  );
+    new Transport({ apiKey: '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' })
+);
+
+  // const transporter = nodemailer.createTransport(
+  //   sendinblueTransport({
+  //     apiKey: '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'
+  //   })
+  // );
 
     transporter.sendMail({
       from: 'The Way Shop',
