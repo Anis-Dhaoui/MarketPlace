@@ -20,7 +20,7 @@ userRouter.get('/', cors.corsWithOpts, function (req, res, next) {
 });
 
 
-userRouter.post('/signup', cors.corsWithOpts, (req, res, next) => {
+userRouter.post('/signup', (req, res, next) => {
 
 	User.findOne({ email: req.body.email }, (err, user) => {
 		if (user) {
@@ -52,13 +52,13 @@ userRouter.post('/signup', cors.corsWithOpts, (req, res, next) => {
 								<h1>Email Confirmation</h1>
 								<h2>Hello ${req.body.firstname}</h2>
 								<p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-								<a href=${base_url}/users/verify/${req.user._doc._id}/${confirCode}> Click here</a>
+								<a href=${base_url}/users/verify/${req.body.firstname}/${confirCode}> Click here</a>
 							</div>`
 							sendEmail(req.body.email, "The Way Shop | Confirm Email", message)
 
 							res.statusCode = 200;
 							res.setHeader('Content-Type', 'application/json');
-							res.json({ success: true, userId: req.user._doc._id, statusMsg: `An email was sent to ${req.user._doc.email} !\n Please check your email to confirm your account `});
+							res.json({ success: true, userId: req.body.lastname, statusMsg: `An email was sent to ${req.body.email} !\n Please check your email to confirm your account `});
 						})
 					}
 				}
