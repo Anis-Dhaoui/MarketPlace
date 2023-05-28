@@ -1,7 +1,7 @@
 # Dockerfile for React client
 
 # Build react client
-FROM node:14-alpine
+FROM node:18.16.0-alpine
 
 # Default working directory be marketplace
 WORKDIR /usr/src/marketplace/client
