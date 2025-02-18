@@ -540,7 +540,7 @@ export const loginWithGoogle = (accessToken) => (dispatch) =>{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`
+            'access_token': accessToken
         },
     })
     .then(res => res.json())
