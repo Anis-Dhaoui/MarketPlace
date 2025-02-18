@@ -301,6 +301,10 @@ userRouter.get('/facebook/token', cors.corsWithOpts, (passport.authenticate('fac
 
 userRouter.get('/google/token', cors.corsWithOpts, (passport.authenticate('google-token')), (req, res) =>{
 	console.log("GooooooooooooooooooooooooooooooooooooooooooooooooooooooooooGLE")
+	console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+	console.log(req.user)
+	console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+
     if (req.user){
 		var token = auth.getToken({ _id: req.user._id });
 		res.statusCode = 200;
